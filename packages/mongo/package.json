@@ -1,0 +1,53 @@
+{
+  "name": "@pentech/mongo",
+  "version": "1.0.0",
+  "description": "Penguin Techology Mongo",
+  "author": "huynvq",
+  "license": "ISC",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "nest build -p tsconfig.json",
+    "clean": "rimraf -rf dist",
+    "format": "prettier \"./src/**/*.ts\" --ignore-path ./.prettierignore --write",
+    "lint": "eslint --fix \"./src/**/*.ts\"",
+    "prebuild": "yarn clean",
+    "prepublishOnly": "yarn build",
+    "purge": "rimraf -rf node_modules",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@pentech/core": "1.0.0",
+    "@typegoose/typegoose": "11.5.0",
+    "mongoose": "7.5.2"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "prettier --write --ignore-path ./.prettierignore",
+      "eslint --fix"
+    ]
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "src",
+    "testRegex": ".*\\.spec\\.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "collectCoverageFrom": [
+      "**/*.(t|j)s"
+    ],
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node"
+  }
+}
