@@ -2156,16 +2156,16 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@pentech/abstraction@workspace:packages/abstraction"
   dependencies:
-    "@pentech/core": 1.0.1
-    "@pentech/crawler": 1.0.1
-    "@pentech/mongo": 1.0.1
-    "@pentech/proxy-manager": 1.0.1
-    "@pentech/rabbit": 1.0.1
-    "@pentech/redis": 1.0.1
+    "@pentech/core": ^1.0.3
+    "@pentech/crawler": ^1.0.3
+    "@pentech/mongo": ^1.0.3
+    "@pentech/proxy-manager": ^1.0.3
+    "@pentech/rabbit": ^1.0.3
+    "@pentech/redis": ^1.0.3
   languageName: unknown
   linkType: soft
 
-"@pentech/core@1.0.1, @pentech/core@workspace:packages/core":
+"@pentech/core@^1.0.3, @pentech/core@workspace:packages/core":
   version: 0.0.0-use.local
   resolution: "@pentech/core@workspace:packages/core"
   dependencies:
@@ -2176,6 +2176,7 @@ __metadata:
     "@types/fs-extra": 11.0.2
     "@types/js-yaml": 4.0.6
     "@types/uuid": 9.0.4
+    any-ascii: 0.3.2
     axios: 1.5.0
     dotenv: 16.3.1
     fs-extra: 11.1.1
@@ -2189,12 +2190,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pentech/crawler@1.0.1, @pentech/crawler@workspace:packages/crawler":
+"@pentech/crawler@^1.0.3, @pentech/crawler@workspace:packages/crawler":
   version: 0.0.0-use.local
   resolution: "@pentech/crawler@workspace:packages/crawler"
   dependencies:
-    "@pentech/core": 1.0.1
-    "@pentech/proxy-manager": 1.0.1
+    "@pentech/core": ^1.0.3
+    "@pentech/proxy-manager": ^1.0.3
     crawlee: 3.5.4
     playwright: 1.37.1
     playwright-extra: 4.3.6
@@ -2204,52 +2205,52 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pentech/model@workspace:packages/model":
-  version: 0.0.0-use.local
-  resolution: "@pentech/model@workspace:packages/model"
-  dependencies:
-    "@pentech/core": 1.0.1
-    "@pentech/mongo": 1.0.1
-    "@types/bcrypt": 5.0.0
-    bcrypt: 5.1.1
-  languageName: unknown
-  linkType: soft
-
-"@pentech/mongo@1.0.1, @pentech/mongo@workspace:packages/mongo":
+"@pentech/mongo@^1.0.3, @pentech/mongo@workspace:packages/mongo":
   version: 0.0.0-use.local
   resolution: "@pentech/mongo@workspace:packages/mongo"
   dependencies:
-    "@pentech/core": 1.0.1
+    "@pentech/core": ^1.0.3
     "@typegoose/typegoose": 11.5.0
     mongoose: 7.5.2
   languageName: unknown
   linkType: soft
 
-"@pentech/proxy-manager@1.0.1, @pentech/proxy-manager@workspace:packages/proxy-manager":
+"@pentech/proxy-manager@^1.0.3, @pentech/proxy-manager@workspace:packages/proxy-manager":
   version: 0.0.0-use.local
   resolution: "@pentech/proxy-manager@workspace:packages/proxy-manager"
   dependencies:
-    "@pentech/core": 1.0.1
+    "@pentech/core": ^1.0.3
   languageName: unknown
   linkType: soft
 
-"@pentech/rabbit@1.0.1, @pentech/rabbit@workspace:packages/rabbit":
+"@pentech/rabbit@^1.0.3, @pentech/rabbit@workspace:packages/rabbit":
   version: 0.0.0-use.local
   resolution: "@pentech/rabbit@workspace:packages/rabbit"
   dependencies:
-    "@pentech/core": 1.0.1
+    "@pentech/core": ^1.0.3
     "@types/amqplib": 0.10.2
     amqp-connection-manager: 4.1.14
     amqplib: 0.10.3
   languageName: unknown
   linkType: soft
 
-"@pentech/redis@1.0.1, @pentech/redis@workspace:packages/redis":
+"@pentech/redis@^1.0.3, @pentech/redis@workspace:packages/redis":
   version: 0.0.0-use.local
   resolution: "@pentech/redis@workspace:packages/redis"
   dependencies:
-    "@pentech/core": 1.0.1
+    "@pentech/core": ^1.0.3
     ioredis: 5.3.2
+  languageName: unknown
+  linkType: soft
+
+"@pentech/story-model@workspace:packages/models/story-model":
+  version: 0.0.0-use.local
+  resolution: "@pentech/story-model@workspace:packages/models/story-model"
+  dependencies:
+    "@pentech/core": ^1.0.3
+    "@pentech/mongo": ^1.0.3
+    "@types/bcrypt": 5.0.0
+    bcrypt: 5.1.1
   languageName: unknown
   linkType: soft
 
@@ -3290,6 +3291,13 @@ __metadata:
   version: 6.2.1
   resolution: "ansi-styles@npm:6.2.1"
   checksum: ef940f2f0ced1a6347398da88a91da7930c33ecac3c77b72c5905f8b8fe402c52e6fde304ff5347f616e27a742da3f1dc76de98f6866c69251ad0b07a66776d9
+  languageName: node
+  linkType: hard
+
+"any-ascii@npm:0.3.2":
+  version: 0.3.2
+  resolution: "any-ascii@npm:0.3.2"
+  checksum: 1ffd7019c8f7c7ccad91187462e3c62455f4b25ff564670abb35309cfdf2a78c5659ad604780e05295bb2cf9cc67768f134a47befe027c5ebbfe0a4cc8275439
   languageName: node
   linkType: hard
 

@@ -22,8 +22,8 @@
       "npmClientArgs": ["--no-package-lock"]
     }
   },
-  "npmClient": "yarn3",
-  "packages": ["packages/*"],
+  "npmClient": "yarn",
+  "packages": ["packages/**"],
   "version": "independent",
   "useNx": true,
   "useWorkspaces": true

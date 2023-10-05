@@ -58,9 +58,15 @@ export class MongoService implements OnModuleDestroy, OnModuleInit {
 
   public getModel<U extends AnyParamConstructor<any>>(
     _class: U,
+    collection: string,
     options?: IModelOptions,
   ): ReturnModelType<U, any> {
-    return getModelForClass(_class, options);
+    return getModelForClass(_class, {
+      schemaOptions: {
+        collection,
+      },
+      ...(options || {}),
+    });
   }
 
   private async release(): Promise<void> {

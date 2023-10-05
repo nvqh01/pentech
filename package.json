@@ -4,7 +4,7 @@
   "author": "huynvq",
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/**"
   ],
   "engines": {
     "node": ">=16"
