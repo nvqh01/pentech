@@ -1,5 +1,5 @@
-import anyAscii from 'any-ascii';
 import moment from 'moment';
+import unidecode from 'unidecode';
 import { v4 as uuidv4 } from 'uuid';
 
 export function convertUrlObject(url: string, throwError?: boolean): URL {
@@ -11,9 +11,14 @@ export function convertUrlObject(url: string, throwError?: boolean): URL {
   }
 }
 
-export function convertUnicodeToAscii(text: string): string {
-  if (!text) return getUuid();
-  return anyAscii(text).replace(' -', '').split(' ').join('-');
+export function convertUnicodeToAscii(input: string): string {
+  if (!input) return getUuid();
+  return unidecode(input)
+    .replace(' -', '')
+    .toLowerCase()
+    .trim()
+    .split(' ')
+    .join('-');
 }
 
 export function getCurrentDate(): Date {

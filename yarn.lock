@@ -2175,8 +2175,8 @@ __metadata:
     "@nestjs/platform-express": 10.2.6
     "@types/fs-extra": 11.0.2
     "@types/js-yaml": 4.0.6
+    "@types/unidecode": 0.1.1
     "@types/uuid": 9.0.4
-    any-ascii: 0.3.2
     axios: 1.5.0
     dotenv: 16.3.1
     fs-extra: 11.1.1
@@ -2186,6 +2186,7 @@ __metadata:
     pino-pretty: 10.2.0
     reflect-metadata: 0.1.13
     rxjs: 7.8.1
+    unidecode: 0.1.8
     uuid: 9.0.1
   languageName: unknown
   linkType: soft
@@ -2828,6 +2829,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/unidecode@npm:0.1.1":
+  version: 0.1.1
+  resolution: "@types/unidecode@npm:0.1.1"
+  checksum: 52a370437c093fa612b2f84a392a21c5c01555d62e89f5acfad3199bf89cf6ed24092206fde566e67e12ba52ea3cb7e44acdaf101e9e0748805cf8a3cdbd2123
+  languageName: node
+  linkType: hard
+
 "@types/uuid@npm:9.0.4":
   version: 9.0.4
   resolution: "@types/uuid@npm:9.0.4"
@@ -3291,13 +3299,6 @@ __metadata:
   version: 6.2.1
   resolution: "ansi-styles@npm:6.2.1"
   checksum: ef940f2f0ced1a6347398da88a91da7930c33ecac3c77b72c5905f8b8fe402c52e6fde304ff5347f616e27a742da3f1dc76de98f6866c69251ad0b07a66776d9
-  languageName: node
-  linkType: hard
-
-"any-ascii@npm:0.3.2":
-  version: 0.3.2
-  resolution: "any-ascii@npm:0.3.2"
-  checksum: 1ffd7019c8f7c7ccad91187462e3c62455f4b25ff564670abb35309cfdf2a78c5659ad604780e05295bb2cf9cc67768f134a47befe027c5ebbfe0a4cc8275439
   languageName: node
   linkType: hard
 
@@ -13430,6 +13431,13 @@ __metadata:
     buffer: ^5.2.1
     through: ^2.3.8
   checksum: 0e67c4a91f4fa0fc7b4045f8b914d3498c2fc2e8c39c359977708ec85ac6d6029840e97f508675fdbdf21fcb8d276ca502043406f3682b70f075e69aae626d1d
+  languageName: node
+  linkType: hard
+
+"unidecode@npm:0.1.8":
+  version: 0.1.8
+  resolution: "unidecode@npm:0.1.8"
+  checksum: 8d07a15a28e6d2b3fb595aa3439d710c968b98a6d7fa5b2d5fdbd3498042f27e1ba1d5925541912ee14368b8a2d35767d66e3f56199f8cde1feafd62a8acd6a2
   languageName: node
   linkType: hard
 
