@@ -1,6 +1,6 @@
 {
   "name": "@pentech/abstraction",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Penguin Techology Abstraction",
   "author": "huynvq",
   "license": "ISC",
@@ -25,7 +25,7 @@
   "dependencies": {
     "@pentech/core": "1.0.5",
     "@pentech/crawler": "1.0.5",
-    "@pentech/mongo": "1.0.5",
+    "@pentech/mongo": "1.0.6",
     "@pentech/proxy-manager": "1.0.5",
     "@pentech/rabbit": "1.0.5",
     "@pentech/redis": "1.0.5"
