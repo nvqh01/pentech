@@ -1,4 +1,4 @@
-import { Ref, prop } from '@pentech/mongo';
+import { Ref, modelOptions, prop } from '@pentech/mongo';
 import { FileData, Origin, SearchText } from './common.model';
 import { Story } from './story.model';
 
@@ -41,16 +41,31 @@ class Chapter extends Origin {
   public numOfComments?: Ref<Comment, string>[];
 }
 
+@modelOptions({
+  schemaOptions: {
+    collection: 'chapters_by_audio',
+  },
+})
 export class ChapterByAudio extends Chapter {
   @prop({ required: true, type: () => FileData })
   public content!: FileData[];
 }
 
+@modelOptions({
+  schemaOptions: {
+    collection: 'chapters_by_image',
+  },
+})
 export class ChapterByImage extends Chapter {
   @prop({ required: true, type: () => FileData })
   public content!: FileData[];
 }
 
+@modelOptions({
+  schemaOptions: {
+    collection: 'chapters_by_text',
+  },
+})
 export class ChapterByText extends Chapter {
   @prop({ required: true })
   public content!: string;

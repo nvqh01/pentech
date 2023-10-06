@@ -1,7 +1,12 @@
-import { Ref, prop } from '@pentech/mongo';
+import { Ref, modelOptions, prop } from '@pentech/mongo';
 import { Origin, SearchText } from './common.model';
 import { Story } from './story.model';
 
+@modelOptions({
+  schemaOptions: {
+    collection: 'categories',
+  },
+})
 export class Category extends Origin {
   @prop({ required: true })
   public name!: SearchText;

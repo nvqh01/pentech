@@ -1,9 +1,14 @@
-import { DocumentType, Ref, prop } from '@pentech/mongo';
+import { DocumentType, Ref, modelOptions, prop } from '@pentech/mongo';
 import bcrypt from 'bcrypt';
 import { Sex, TypeOfStory } from '../enums';
 import { FileData, Origin, SearchText } from './common.model';
 import { Story } from './story.model';
 
+@modelOptions({
+  schemaOptions: {
+    collection: 'authors',
+  },
+})
 export class Author extends Origin {
   @prop({ required: false, type: () => FileData })
   public avatar?: FileData;

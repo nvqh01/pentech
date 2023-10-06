@@ -1,4 +1,4 @@
-import { Ref, prop } from '@pentech/mongo';
+import { Ref, modelOptions, prop } from '@pentech/mongo';
 import { StatusOfStory } from '../enums';
 import { Author } from './author.model';
 import { Category } from './category.model';
@@ -6,6 +6,11 @@ import { ChapterByAudio, ChapterByImage, ChapterByText } from './chapter.model';
 import { Comment } from './comment.model';
 import { FileData, Origin, SearchText } from './common.model';
 
+@modelOptions({
+  schemaOptions: {
+    collection: 'stories',
+  },
+})
 export class Story extends Origin {
   @prop({ required: false, type: () => FileData })
   public avatar?: FileData;

@@ -1,9 +1,14 @@
-import { Ref, prop } from '@pentech/mongo';
+import { Ref, modelOptions, prop } from '@pentech/mongo';
 import { Author } from './author.model';
 import { ChapterByAudio, ChapterByImage, ChapterByText } from './chapter.model';
 import { FileData, Origin } from './common.model';
 import { Story } from './story.model';
 
+@modelOptions({
+  schemaOptions: {
+    collection: 'comments',
+  },
+})
 export class Comment extends Origin {
   @prop({ required: true, type: () => FileData || String })
   public content: (FileData | string)[];
