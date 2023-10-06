@@ -1,4 +1,4 @@
-import { Module } from '@pentech/core';
+import { Module, Global } from '@pentech/core';
 import {
   authorModelProvider,
   categoryModelProvider,
@@ -9,6 +9,7 @@ import {
   storyModelProvider,
 } from './story-model.service';
 
+@Global()
 @Module({
   imports: [],
   providers: [
