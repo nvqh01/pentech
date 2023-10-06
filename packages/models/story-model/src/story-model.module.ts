@@ -30,4 +30,4 @@ import {
     storyModelProvider,
   ],
 })
-export class StoryModel {}
+export class StoryModelModule {}

@@ -1,4 +1,5 @@
 import { Ref, modelOptions, prop } from '@pentech/mongo';
+import { Comment } from './comment.model';
 import { FileData, Origin, SearchText } from './common.model';
 import { Story } from './story.model';
 
