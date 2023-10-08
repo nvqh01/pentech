@@ -29,6 +29,7 @@ class Chapter extends Origin {
     localField: 'id',
     ref: () => Comment,
     required: false,
+    type: () => String,
   })
   public comments?: Ref<Comment, string>[];
 
@@ -38,6 +39,7 @@ class Chapter extends Origin {
     localField: 'id',
     ref: () => Comment,
     required: false,
+    type: () => String,
   })
   public numOfComments?: Ref<Comment, string>[];
 }

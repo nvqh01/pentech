@@ -1,6 +1,6 @@
 import { getCurrentDate } from '@pentech/core';
 import { modelOptions, mongoose, prop } from '@pentech/mongo';
-import { CrawlingStatus, Language, TypeOfStory } from '../enums';
+import { CrawlingStatus } from '../enums';
 
 export const commonSchemaOptions: mongoose.SchemaOptions = {
   _id: false,
@@ -65,24 +65,6 @@ export class Origin {
 
   @prop({ index: true, required: false })
   public deleted_date?: Date;
-
-  @prop({
-    default: () => Language.UNKNOWN,
-    enum: Language,
-    index: true,
-    required: false,
-    type: () => Number,
-  })
-  public language?: Language;
-
-  @prop({
-    default: () => TypeOfStory.UNKNOWN,
-    enum: TypeOfStory,
-    index: true,
-    required: true,
-    type: () => Number,
-  })
-  public typeOfStory?: TypeOfStory;
 }
 
 @modelOptions({

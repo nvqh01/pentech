@@ -57,6 +57,7 @@ export class Story extends Origin {
     foreignField: 'story',
     ref: () => ChapterByAudio || ChapterByImage || ChapterByText,
     required: false,
+    type: () => String,
   })
   public chapters?: Ref<
     ChapterByAudio | ChapterByImage | ChapterByText,
@@ -69,6 +70,7 @@ export class Story extends Origin {
     foreignField: 'story',
     ref: () => ChapterByAudio || ChapterByImage || ChapterByText,
     required: false,
+    type: () => String,
   })
   public numOfChapters?: Ref<
     ChapterByAudio | ChapterByImage | ChapterByText,
@@ -80,6 +82,7 @@ export class Story extends Origin {
     foreignField: 'story',
     ref: () => Comment,
     required: false,
+    type: () => String,
   })
   public comments?: Ref<Comment, string>[];
 
@@ -89,6 +92,7 @@ export class Story extends Origin {
     foreignField: 'story',
     ref: () => Comment,
     required: false,
+    type: () => String,
   })
   public numOfComments?: Ref<Comment, string>[];
 }

@@ -59,6 +59,7 @@ export class Author extends Origin {
     foreignField: 'authors',
     ref: () => Story,
     required: false,
+    type: () => String,
   })
   public stories?: Ref<Story, string>[];
 
@@ -68,6 +69,7 @@ export class Author extends Origin {
     foreignField: 'authors',
     ref: () => Story,
     required: false,
+    type: () => String,
   })
   public numOfStories?: Ref<Story, string>[];
 }

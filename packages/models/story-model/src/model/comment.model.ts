@@ -42,6 +42,7 @@ export class Comment extends Origin {
     foreignField: 'comment',
     ref: () => Comment,
     required: false,
+    type: () => String,
   })
   public comments?: Ref<Comment, string>[];
 
@@ -51,6 +52,7 @@ export class Comment extends Origin {
     foreignField: 'comment',
     ref: () => Comment,
     required: false,
+    type: () => String,
   })
   public numOfComments?: Ref<Comment, string>[];
 }
