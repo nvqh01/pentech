@@ -2160,7 +2160,7 @@ __metadata:
     "@pentech/crawler": 1.0.5
     "@pentech/mongo": 1.0.6
     "@pentech/proxy-manager": 1.0.5
-    "@pentech/rabbit": 1.0.5
+    "@pentech/rabbit": 1.0.6
     "@pentech/redis": 1.0.5
   languageName: unknown
   linkType: soft
@@ -2233,7 +2233,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pentech/rabbit@1.0.5, @pentech/rabbit@workspace:packages/rabbit":
+"@pentech/rabbit@1.0.6, @pentech/rabbit@workspace:packages/rabbit":
   version: 0.0.0-use.local
   resolution: "@pentech/rabbit@workspace:packages/rabbit"
   dependencies:
