@@ -11,6 +11,8 @@ import { ConsumeMessage } from 'amqplib';
 import { Adapter } from '../adapter';
 import { ConsumerConfig } from './consumer.config';
 
+export type ActcionBeforeRestart = (...args: any[]) => Promise<void> | void;
+
 @Injectable()
 export abstract class Consumer<Input = any>
   implements OnModuleDestroy, OnModuleInit
@@ -24,14 +26,19 @@ export abstract class Consumer<Input = any>
   @Inject()
   protected readonly logger: LogService;
 
+  private actionsBeforeRestart: ActcionBeforeRestart[];
   private channel: ChannelWrapper;
   private config: ConsumerConfig;
   private messageHandler: (
     input: Input,
     msg: ConsumeMessage,
   ) => Promise<void> | void;
+  private isFirstStarted: boolean;
 
-  constructor(protected context: string, protected configKey: string) {}
+  constructor(protected context: string, protected configKey: string) {
+    this.actionsBeforeRestart = [];
+    this.isFirstStarted = true;
+  }
 
   public async onModuleDestroy(): Promise<void> {
     await this.release();
@@ -53,6 +60,9 @@ export abstract class Consumer<Input = any>
       name: config.channelName,
       confirm: false,
       setup: async (channel: Channel) => {
+        !this.isFirstStarted && (await Promise.all(this.actionsBeforeRestart));
+        this.isFirstStarted = false;
+
         return Promise.all([
           channel.assertQueue(config.queue, { durable: true }),
           channel.prefetch(config.prefetchMessages),
@@ -123,6 +133,13 @@ export abstract class Consumer<Input = any>
       );
       return null;
     }
+  }
+
+  public addActionsBeforeRestart(
+    actions: ActcionBeforeRestart | ActcionBeforeRestart[],
+  ): void {
+    !Array.isArray(actions) && (actions = [actions]);
+    this.actionsBeforeRestart.push(...actions);
   }
 
   public addMessageHandler(
