@@ -36,12 +36,14 @@
     "pino-pretty": "10.2.0",
     "reflect-metadata": "0.1.13",
     "rxjs": "7.8.1",
+    "sanitize-html": "2.11.0",
     "unidecode": "0.1.8",
     "uuid": "9.0.1"
   },
   "devDependencies": {
     "@types/fs-extra": "11.0.2",
     "@types/js-yaml": "4.0.6",
+    "@types/sanitize-html": "2.9.2",
     "@types/unidecode": "0.1.1",
     "@types/uuid": "9.0.4"
   },
