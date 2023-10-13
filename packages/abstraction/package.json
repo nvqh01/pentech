@@ -1,6 +1,6 @@
 {
   "name": "@pentech/abstraction",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Penguin Techology Abstraction",
   "author": "huynvq",
   "license": "ISC",
@@ -23,12 +23,12 @@
     "test": "jest"
   },
   "dependencies": {
-    "@pentech/core": "1.0.5",
-    "@pentech/crawler": "1.0.5",
-    "@pentech/mongo": "1.0.6",
-    "@pentech/proxy-manager": "1.0.5",
-    "@pentech/rabbit": "1.0.6",
-    "@pentech/redis": "1.0.5"
+    "@pentech/core": "1.0.6",
+    "@pentech/crawler": "1.0.6",
+    "@pentech/mongo": "1.0.7",
+    "@pentech/proxy-manager": "1.0.6",
+    "@pentech/rabbit": "1.0.7",
+    "@pentech/redis": "1.0.6"
   },
   "lint-staged": {
     "*.ts": [
