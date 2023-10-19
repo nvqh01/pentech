@@ -39,6 +39,7 @@ export abstract class Stream<Input = any, Output = any>
   public async onModuleInit(): Promise<void> {
     if (!this.getConfig().enable) return;
     this.logger.setContext(this.context);
+    this.logger.info('Config: %j', this.getConfig());
     await this._init();
     this._start();
   }
