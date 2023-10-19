@@ -2,13 +2,17 @@ export class ProducerConfig {
   public channelName: string;
   public exchange: string;
   public queue: string;
-  public routingKey: string;
+  public queues: {
+    queue: string;
+    routingKey: string;
+  }[];
   public type: 'direct' | 'topic' | 'headers' | 'fanout' | 'match';
 
   constructor(props: Partial<ProducerConfig>) {
     Object.assign(this, {
       ...props,
       channelName: this.getChannelName(props),
+      queues: props?.queues || [],
       type: props?.type || 'topic',
     });
   }

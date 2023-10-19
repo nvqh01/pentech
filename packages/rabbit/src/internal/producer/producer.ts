@@ -44,8 +44,8 @@ export abstract class Producer<Output = any>
       return process.exit(0);
     }
 
-    if (config.exchange && !config?.routingKey) {
-      this.logger.error('Lack of routing key.');
+    if (config.exchange && !config.queues.length) {
+      this.logger.error('Lack of queue and routing key.');
       return process.exit(0);
     }
 
@@ -58,8 +58,13 @@ export abstract class Producer<Output = any>
             channel.assertExchange(config.exchange, config.type, {
               durable: true,
             }),
-            channel.assertQueue(config.queue, { durable: true }),
-            channel.bindQueue(config.queue, config.exchange, config.routingKey),
+            config.queues.map(
+              async ({ queue, routingKey }) =>
+                await Promise.all([
+                  channel.assertQueue(queue, { durable: true }),
+                  channel.bindQueue(queue, config.exchange, routingKey),
+                ]),
+            ),
           ]);
 
         if (config.queue)
@@ -101,12 +106,17 @@ export abstract class Producer<Output = any>
     return JSON.stringify(output);
   }
 
+  public getRoutingKey(indexOfBindingQueue: number): string {
+    return this.getConfig().queues[indexOfBindingQueue].routingKey;
+  }
+
   public getQueueName(): string {
     return this.getConfig().queue;
   }
 
   public async publish(
     output: Output | Output[],
+    routingKey: string,
     options?: Options.Publish,
   ): Promise<void> {
     !Array.isArray(output) && (output = [output]);
@@ -116,7 +126,7 @@ export abstract class Producer<Output = any>
         async _output =>
           await this.channel.publish(
             this.getConfig().exchange,
-            this.getConfig().routingKey,
+            routingKey,
             this.transform(_output),
             {
               persistent: true,

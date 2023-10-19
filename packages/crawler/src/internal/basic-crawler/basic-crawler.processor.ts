@@ -42,6 +42,9 @@ export abstract class BasicCrawlerProcessor<Context extends CrawlingContext>
   protected failedRequestHandler: (ctx: Context) => Promise<void> | void;
   protected router: RouterHandler<Context>;
 
+  protected abstract getConfig(): BasicCrawlerConfig;
+  protected abstract initialize(): void;
+
   constructor(protected context: string, protected configKey: string) {
     this.actionsBeforeRestart = [];
     this.numOfRestarts = 0;
@@ -80,9 +83,6 @@ export abstract class BasicCrawlerProcessor<Context extends CrawlingContext>
     await sleep(3_000);
     return await this.start();
   }
-
-  protected abstract getConfig(): BasicCrawlerConfig;
-  protected abstract initialize(): void;
 
   public addActionsBeforeRestart(
     actions: ActcionBeforeRestart | ActcionBeforeRestart[],
