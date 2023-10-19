@@ -58,13 +58,12 @@ export abstract class Producer<Output = any>
             channel.assertExchange(config.exchange, config.type, {
               durable: true,
             }),
-            config.queues.map(
-              async ({ queue, routingKey }) =>
-                await Promise.all([
-                  channel.assertQueue(queue, { durable: true }),
-                  channel.bindQueue(queue, config.exchange, routingKey),
-                ]),
-            ),
+            ...config.queues.map(async ({ queue, routingKey }) => {
+              return await Promise.all([
+                channel.assertQueue(queue, { durable: true }),
+                channel.bindQueue(queue, config.exchange, routingKey),
+              ]);
+            }),
           ]);
 
         if (config.queue)

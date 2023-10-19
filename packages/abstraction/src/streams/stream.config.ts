@@ -8,7 +8,7 @@ export class StreamConfig {
   public useProducer: boolean;
 
   constructor(props: Partial<StreamConfig>) {
-    Object.assign({
+    Object.assign(this, {
       cache: {
         enale: props?.cache?.enable || false,
         ttl: props?.cache?.ttl || 2 * 24 * 60 * 60,
