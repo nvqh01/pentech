@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.14](https://github.com/nvqh01/pentech/compare/@pentech/abstraction@1.0.13...@pentech/abstraction@1.0.14) (2023-10-20)
+
+### Bug Fixes
+
+- change value name in package abstraction ([d3163aa](https://github.com/nvqh01/pentech/commit/d3163aa65321af497e3a08a8508f54a56b264034))
+
 ## [1.0.13](https://github.com/nvqh01/pentech/compare/@pentech/abstraction@1.0.12...@pentech/abstraction@1.0.13) (2023-10-19)
 
 **Note:** Version bump only for package @pentech/abstraction
