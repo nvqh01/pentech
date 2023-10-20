@@ -10,7 +10,7 @@ export class StreamConfig {
   constructor(props: Partial<StreamConfig>) {
     Object.assign(this, {
       cache: {
-        enale: props?.cache?.enable || false,
+        enable: props?.cache?.enable || false,
         ttl: props?.cache?.ttl || 2 * 24 * 60 * 60,
       },
       enable: props?.enable || false,
