@@ -51,6 +51,7 @@ export class FileData {
 @modelOptions({
   schemaOptions: {
     ...commonSchemaOptions,
+    _id: true,
     timestamps: true,
     toJSON: { virtuals: true },
     toObject: { virtuals: true },
