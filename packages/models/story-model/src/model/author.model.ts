@@ -22,7 +22,7 @@ export class Author extends Origin {
   @prop({ required: true, type: () => SearchText })
   public name!: SearchText;
 
-  @prop({ maxlength: 14, minlength: 7, required: true })
+  @prop({ required: true })
   public password!: string;
 
   @prop({ enum: TypeOfStory, required: true, type: () => Number })
@@ -33,8 +33,8 @@ export class Author extends Origin {
 
   @prop({
     index: true,
-    maxlength: 14,
-    minlength: 7,
+    maxlength: 10,
+    minlength: 4,
     required: true,
     unique: true,
   })
