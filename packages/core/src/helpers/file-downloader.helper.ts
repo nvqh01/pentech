@@ -49,6 +49,11 @@ export class FileDownloader {
       ...requestConfig,
     });
 
+    if (response.status < 200 || response.status >= 300)
+      throw new Error(
+        `Get status code ${response.status} while downloading image.`,
+      );
+
     const binData = Buffer.from(response.data, 'binary');
 
     await Promise.all(

@@ -129,10 +129,10 @@ export function convertUrlObject(url: string, throwError?: boolean): URL {
 
 export function convertUnicodeToAscii(input: string): string {
   return unidecode(input)
-    .trim()
     .toLowerCase()
     .replaceAll(/[~!@#$%^&*()+-]/gi, '')
     .replaceAll(/\s{1,}/gi, ' ')
+    .trim()
     .split(' ')
     .join('-');
 }
