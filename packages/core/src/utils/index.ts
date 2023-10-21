@@ -165,3 +165,4 @@ export function sleep(ms: number): Promise<void> {
 }
 
 export * from './hash-url';
+export * from './lodash';

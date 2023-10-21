@@ -1991,6 +1991,7 @@ __metadata:
     "@nestjs/platform-express": 10.2.6
     "@types/fs-extra": 11.0.2
     "@types/js-yaml": 4.0.6
+    "@types/lodash": 4.14.200
     "@types/sanitize-html": 2.9.2
     "@types/unidecode": 0.1.1
     "@types/uuid": 9.0.4
@@ -1998,6 +1999,7 @@ __metadata:
     dotenv: 16.3.1
     fs-extra: 11.1.1
     js-yaml: 4.1.0
+    lodash: 4.17.21
     moment: 2.29.4
     pino: 8.15.1
     pino-pretty: 10.2.0
@@ -2499,6 +2501,13 @@ __metadata:
   dependencies:
     "@types/node": "*"
   checksum: 3e020944de09e54ef7c4200dfbbedba76da417a58c712611ff9d30921e214dfabbe81dadd4d6608647a3ee8900d445407d7336dd991b8fe6df4249320ad4a1b4
+  languageName: node
+  linkType: hard
+
+"@types/lodash@npm:4.14.200":
+  version: 4.14.200
+  resolution: "@types/lodash@npm:4.14.200"
+  checksum: 6471f8bb5da692a6ecf03a8da4935bfbc341e67ee9bcb4f5730bfacff0c367232548f0a01e8ac5ea18c6fe78fb085d502494e33ccb47a7ee87cbdee03b47d00d
   languageName: node
   linkType: hard
 

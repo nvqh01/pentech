@@ -31,6 +31,7 @@
     "dotenv": "16.3.1",
     "fs-extra": "11.1.1",
     "js-yaml": "4.1.0",
+    "lodash": "4.17.21",
     "moment": "2.29.4",
     "pino": "8.15.1",
     "pino-pretty": "10.2.0",
@@ -43,6 +44,7 @@
   "devDependencies": {
     "@types/fs-extra": "11.0.2",
     "@types/js-yaml": "4.0.6",
+    "@types/lodash": "4.14.200",
     "@types/sanitize-html": "2.9.2",
     "@types/unidecode": "0.1.1",
     "@types/uuid": "9.0.4"
