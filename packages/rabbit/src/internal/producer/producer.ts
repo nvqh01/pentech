@@ -10,6 +10,12 @@ import { Channel, ChannelWrapper, Options } from 'amqp-connection-manager';
 import { Adapter } from '../adapter';
 import { ProducerConfig } from './producer.config';
 
+type PublishOptions = Options.Publish & {
+  routingKey: {
+    indexOfBindingQueue: number;
+  };
+};
+
 @Injectable()
 export abstract class Producer<Output = any>
   implements OnModuleDestroy, OnModuleInit
@@ -115,10 +121,14 @@ export abstract class Producer<Output = any>
 
   public async publish(
     output: Output | Output[],
-    routingKey: string,
-    options?: Options.Publish,
+    options: PublishOptions,
   ): Promise<void> {
     !Array.isArray(output) && (output = [output]);
+
+    const routingKey = this.getRoutingKey(
+      options.routingKey.indexOfBindingQueue,
+    );
+    delete options.routingKey;
 
     await Promise.all(
       output.map(
