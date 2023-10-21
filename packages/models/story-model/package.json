@@ -1,6 +1,6 @@
 {
   "name": "@pentech/story-model",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Penguin Techology Story Model",
   "author": "huynvq",
   "license": "ISC",
@@ -23,8 +23,8 @@
     "test": "jest"
   },
   "dependencies": {
-    "@pentech/core": "1.0.6",
-    "@pentech/mongo": "1.0.7",
+    "@pentech/core": "1.0.7",
+    "@pentech/mongo": "1.0.8",
     "bcrypt": "5.1.1"
   },
   "devDependencies": {

@@ -1,6 +1,6 @@
 {
   "name": "@pentech/data-center-model",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Penguin Techology Data Center Model",
   "author": "huynvq",
   "license": "ISC",
@@ -23,8 +23,8 @@
     "test": "jest"
   },
   "dependencies": {
-    "@pentech/core": "1.0.6",
-    "@pentech/mongo": "1.0.7"
+    "@pentech/core": "1.0.7",
+    "@pentech/mongo": "1.0.8"
   },
   "lint-staged": {
     "*.ts": [

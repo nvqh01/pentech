@@ -1972,16 +1972,16 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@pentech/abstraction@workspace:packages/abstraction"
   dependencies:
-    "@pentech/core": 1.0.6
-    "@pentech/crawler": 1.0.8
-    "@pentech/mongo": 1.0.7
-    "@pentech/proxy-manager": 1.0.6
-    "@pentech/rabbit": 1.0.9
-    "@pentech/redis": 1.0.6
+    "@pentech/core": 1.0.7
+    "@pentech/crawler": 1.0.9
+    "@pentech/mongo": 1.0.8
+    "@pentech/proxy-manager": 1.0.7
+    "@pentech/rabbit": 1.0.10
+    "@pentech/redis": 1.0.7
   languageName: unknown
   linkType: soft
 
-"@pentech/core@1.0.6, @pentech/core@workspace:packages/core":
+"@pentech/core@1.0.7, @pentech/core@workspace:packages/core":
   version: 0.0.0-use.local
   resolution: "@pentech/core@workspace:packages/core"
   dependencies:
@@ -2009,12 +2009,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pentech/crawler@1.0.8, @pentech/crawler@workspace:packages/crawler":
+"@pentech/crawler@1.0.9, @pentech/crawler@workspace:packages/crawler":
   version: 0.0.0-use.local
   resolution: "@pentech/crawler@workspace:packages/crawler"
   dependencies:
-    "@pentech/core": 1.0.6
-    "@pentech/proxy-manager": 1.0.6
+    "@pentech/core": 1.0.7
+    "@pentech/proxy-manager": 1.0.7
     crawlee: 3.5.7
     playwright: 1.39.0
     playwright-extra: 4.3.6
@@ -2028,45 +2028,45 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@pentech/data-center-model@workspace:packages/models/data-center-model"
   dependencies:
-    "@pentech/core": 1.0.6
-    "@pentech/mongo": 1.0.7
+    "@pentech/core": 1.0.7
+    "@pentech/mongo": 1.0.8
   languageName: unknown
   linkType: soft
 
-"@pentech/mongo@1.0.7, @pentech/mongo@workspace:packages/mongo":
+"@pentech/mongo@1.0.8, @pentech/mongo@workspace:packages/mongo":
   version: 0.0.0-use.local
   resolution: "@pentech/mongo@workspace:packages/mongo"
   dependencies:
-    "@pentech/core": 1.0.6
+    "@pentech/core": 1.0.7
     "@typegoose/typegoose": 11.5.0
     mongoose: 7.5.2
   languageName: unknown
   linkType: soft
 
-"@pentech/proxy-manager@1.0.6, @pentech/proxy-manager@workspace:packages/proxy-manager":
+"@pentech/proxy-manager@1.0.7, @pentech/proxy-manager@workspace:packages/proxy-manager":
   version: 0.0.0-use.local
   resolution: "@pentech/proxy-manager@workspace:packages/proxy-manager"
   dependencies:
-    "@pentech/core": 1.0.6
+    "@pentech/core": 1.0.7
   languageName: unknown
   linkType: soft
 
-"@pentech/rabbit@1.0.9, @pentech/rabbit@workspace:packages/rabbit":
+"@pentech/rabbit@1.0.10, @pentech/rabbit@workspace:packages/rabbit":
   version: 0.0.0-use.local
   resolution: "@pentech/rabbit@workspace:packages/rabbit"
   dependencies:
-    "@pentech/core": 1.0.6
+    "@pentech/core": 1.0.7
     "@types/amqplib": 0.10.2
     amqp-connection-manager: 4.1.14
     amqplib: 0.10.3
   languageName: unknown
   linkType: soft
 
-"@pentech/redis@1.0.6, @pentech/redis@workspace:packages/redis":
+"@pentech/redis@1.0.7, @pentech/redis@workspace:packages/redis":
   version: 0.0.0-use.local
   resolution: "@pentech/redis@workspace:packages/redis"
   dependencies:
-    "@pentech/core": 1.0.6
+    "@pentech/core": 1.0.7
     ioredis: 5.3.2
   languageName: unknown
   linkType: soft
@@ -2075,8 +2075,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@pentech/story-model@workspace:packages/models/story-model"
   dependencies:
-    "@pentech/core": 1.0.6
-    "@pentech/mongo": 1.0.7
+    "@pentech/core": 1.0.7
+    "@pentech/mongo": 1.0.8
     "@types/bcrypt": 5.0.0
     bcrypt: 5.1.1
   languageName: unknown
