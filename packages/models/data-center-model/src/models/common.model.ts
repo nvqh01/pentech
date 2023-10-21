@@ -38,6 +38,9 @@ export class FileData {
   @prop({ required: false })
   public index?: number;
 
+  @prop({ default: false, required: false })
+  public isSaved?: boolean;
+
   @prop({ required: true })
   public name!: string;
 
