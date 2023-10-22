@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.9](https://github.com/nvqh01/pentech/compare/@pentech/proxy-manager@1.0.8...@pentech/proxy-manager@1.0.9) (2023-10-22)
+
+**Note:** Version bump only for package @pentech/proxy-manager
+
 ## [1.0.8](https://github.com/nvqh01/pentech/compare/@pentech/proxy-manager@1.0.7...@pentech/proxy-manager@1.0.8) (2023-10-21)
 
 **Note:** Version bump only for package @pentech/proxy-manager

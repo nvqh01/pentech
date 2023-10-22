@@ -1,6 +1,6 @@
 {
   "name": "@pentech/rabbit",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "Penguin Techology Rabbit",
   "author": "huynvq",
   "license": "ISC",
@@ -23,7 +23,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@pentech/core": "1.0.8",
+    "@pentech/core": "1.0.9",
     "amqp-connection-manager": "4.1.14",
     "amqplib": "0.10.3"
   },
