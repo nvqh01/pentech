@@ -39,31 +39,46 @@ export class FileDownloader {
     return proxyConfig;
   }
 
-  public async download(): Promise<void> {
-    const { requestConfig, storages, proxy } = this.config;
-    proxy && (requestConfig.proxy = this.buildProxyConfig(proxy));
+  public async download(): Promise<{
+    isDownloaded: boolean;
+    errorMessage?: string;
+  }> {
+    try {
+      const { requestConfig, storages, proxy } = this.config;
+      proxy && (requestConfig.proxy = this.buildProxyConfig(proxy));
 
-    const response = await axios.request({
-      responseType: 'arraybuffer',
-      timeout: 60_000,
-      ...requestConfig,
-    });
+      const response = await axios.request({
+        responseType: 'arraybuffer',
+        timeout: 60_000,
+        ...requestConfig,
+      });
 
-    if (response.status < 200 || response.status >= 300)
-      throw new Error(
-        `Get status code ${response.status} while downloading image.`,
+      if (response.status < 200 || response.status >= 300)
+        return {
+          isDownloaded: false,
+          errorMessage: `Get status code ${response.status} while downloading image.`,
+        };
+
+      const binData = Buffer.from(response.data, 'binary');
+
+      await Promise.all(
+        storages.map(async storage => {
+          storage.type === 'cloud_flare_storage' &&
+            console.log('CloudFlare Storage');
+
+          storage.type === 'disk_storage' &&
+            outputFileSync(storage.path, binData, 'utf8');
+        }),
       );
 
-    const binData = Buffer.from(response.data, 'binary');
-
-    await Promise.all(
-      storages.map(async storage => {
-        storage.type === 'cloud_flare_storage' &&
-          console.log('CloudFlare Storage');
-
-        storage.type === 'disk_storage' &&
-          outputFileSync(storage.path, binData, 'utf8');
-      }),
-    );
+      return {
+        isDownloaded: true,
+      };
+    } catch (error) {
+      return {
+        isDownloaded: false,
+        errorMessage: error?.stack || 'Unknown',
+      };
+    }
   }
 }
