@@ -105,9 +105,14 @@ export abstract class BasicCrawlerProcessor<Context extends CrawlingContext>
 
   public async addRequests(
     requests: Request[],
-    options?: CrawlerAddRequestsOptions,
+    options: CrawlerAddRequestsOptions = {},
+    retryCount: number = 0,
   ): Promise<void> {
-    await this.crawler.addRequests(requests, options);
+    await this.crawler.addRequests(requests, options).catch(async error => {
+      if (retryCount >= 3) throw error;
+      await sleep(3_000);
+      return await this.addRequests(requests, options, retryCount + 1);
+    });
   }
 
   public addRequestHandler(
