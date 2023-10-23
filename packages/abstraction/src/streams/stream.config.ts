@@ -6,6 +6,7 @@ export class StreamConfig {
   public enable: boolean;
   public useConsumer: boolean;
   public useProducer: boolean;
+  public waitToStartBeforeQueue: number;
 
   constructor(props: Partial<StreamConfig>) {
     Object.assign(this, {
@@ -16,6 +17,7 @@ export class StreamConfig {
       enable: props?.enable || false,
       useConsumer: props?.useConsumer || false,
       useProducer: props?.useProducer || false,
+      waitToStartBeforeQueue: props?.waitToStartBeforeQueue || 10_000,
     });
   }
 }
