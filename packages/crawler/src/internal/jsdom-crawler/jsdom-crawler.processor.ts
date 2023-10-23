@@ -5,6 +5,7 @@ import {
   JSDOMCrawlingContext,
   createJSDOMRouter,
 } from 'crawlee';
+import { createConfiguration } from '../../utils';
 import { CrawlerConfig } from '../basic-crawler';
 import { HttpCrawlerProcessor } from '../http-crawler';
 import { JSDOMCrawlerConfig } from './jsdom-crawler.config';
@@ -37,9 +38,12 @@ export abstract class JSDOMCrawlerProcessor<
     this.failedRequestHandler &&
       (crawlerOptions.failedRequestHandler = this.failedRequestHandler);
 
-    this.crawler = new JSDOMCrawler({
-      ...crawlerOptions,
-      requestHandler: this.router,
-    });
+    this.crawler = new JSDOMCrawler(
+      {
+        ...crawlerOptions,
+        requestHandler: this.router,
+      },
+      createConfiguration(),
+    );
   }
 }

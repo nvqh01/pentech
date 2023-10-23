@@ -1,8 +1,26 @@
+import { MemoryStorage } from '@crawlee/memory-storage';
 import { getUuid } from '@pentech/core';
-import { Request, RequestOptions as BaseRequestOptions } from 'crawlee';
+import {
+  Request,
+  RequestOptions as BaseRequestOptions,
+  Configuration,
+} from 'crawlee';
 
 interface RequestOptions extends BaseRequestOptions {
   autoCreateUniqueKey?: boolean;
+}
+
+export function createConfiguration(): Configuration {
+  const globalConfig = Configuration.getGlobalConfig();
+
+  globalConfig.set(
+    'storageClient',
+    new MemoryStorage({
+      persistStorage: globalConfig.get('persistStorage'),
+    }),
+  );
+
+  return globalConfig;
 }
 
 export function createRequests(

@@ -5,6 +5,7 @@ import {
   PlaywrightCrawlingContext,
   createPlaywrightRouter,
 } from 'crawlee';
+import { createConfiguration } from '../../utils';
 import { CrawlerConfig } from '../basic-crawler';
 import { BrowserCrawlerProcessor } from '../browser-crawler';
 import { PlaywrightCrawlerConfig } from './playwright-crawler.config';
@@ -37,9 +38,12 @@ export abstract class PlaywrightCrawlerProcessor<
     this.failedRequestHandler &&
       (crawlerOptions.failedRequestHandler = this.failedRequestHandler);
 
-    this.crawler = new PlaywrightCrawler({
-      ...crawlerOptions,
-      requestHandler: this.router,
-    });
+    this.crawler = new PlaywrightCrawler(
+      {
+        ...crawlerOptions,
+        requestHandler: this.router,
+      },
+      createConfiguration(),
+    );
   }
 }

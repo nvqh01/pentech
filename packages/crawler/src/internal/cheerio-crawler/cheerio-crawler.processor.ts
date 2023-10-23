@@ -5,6 +5,7 @@ import {
   CheerioCrawlingContext,
   createCheerioRouter,
 } from 'crawlee';
+import { createConfiguration } from '../../utils';
 import { CrawlerConfig } from '../basic-crawler';
 import { HttpCrawlerProcessor } from '../http-crawler';
 import { CheerioCrawlerConfig } from './cheerio-crawler.config';
@@ -37,9 +38,12 @@ export abstract class CheerioCrawlerProcessor<
     this.failedRequestHandler &&
       (crawlerOptions.failedRequestHandler = this.failedRequestHandler);
 
-    this.crawler = new CheerioCrawler({
-      ...crawlerOptions,
-      requestHandler: this.router,
-    });
+    this.crawler = new CheerioCrawler(
+      {
+        ...crawlerOptions,
+        requestHandler: this.router,
+      },
+      createConfiguration(),
+    );
   }
 }

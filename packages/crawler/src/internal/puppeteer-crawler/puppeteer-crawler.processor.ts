@@ -5,6 +5,7 @@ import {
   PuppeteerCrawlingContext,
   createPuppeteerRouter,
 } from 'crawlee';
+import { createConfiguration } from '../../utils';
 import { CrawlerConfig } from '../basic-crawler';
 import { BrowserCrawlerProcessor } from '../browser-crawler';
 import { PuppeteerCrawlerConfig } from './puppeteer-crawler.config';
@@ -37,9 +38,12 @@ export abstract class PuppeteerCrawlerProcessor<
     this.failedRequestHandler &&
       (crawlerOptions.failedRequestHandler = this.failedRequestHandler);
 
-    this.crawler = new PuppeteerCrawler({
-      ...crawlerOptions,
-      requestHandler: this.router,
-    });
+    this.crawler = new PuppeteerCrawler(
+      {
+        ...crawlerOptions,
+        requestHandler: this.router,
+      },
+      createConfiguration(),
+    );
   }
 }

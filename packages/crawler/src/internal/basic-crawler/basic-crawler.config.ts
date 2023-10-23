@@ -44,10 +44,10 @@ export abstract class BasicCrawlerConfig {
       sameDomainDelaySecs: crawlerOptions?.sameDomainDelaySecs || 0,
       sessionPoolOptions: {
         blockedStatusCodes: [401, 403, 429],
-        maxPoolSize: 50_000,
+        maxPoolSize: 10_000,
         sessionOptions: {
           maxAgeSecs: 3_000,
-          maxUsageCount: 20,
+          maxUsageCount: 50,
         },
         ...(crawlerOptions?.sessionPoolOptions || {}),
       },
