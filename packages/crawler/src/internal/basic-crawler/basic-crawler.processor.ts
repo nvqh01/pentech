@@ -23,7 +23,7 @@ export type ActcionBeforeRestart = (...args: any[]) => Promise<void> | void;
 export abstract class BasicCrawlerProcessor<Context extends CrawlingContext>
   implements OnModuleDestroy, OnModuleInit
 {
-  static MAX_OF_RESTARTS: number = 5;
+  static MAX_OF_RESTARTS: number = 10;
 
   private actionsBeforeRestart: ActcionBeforeRestart[];
   private numOfRestarts: number;
@@ -60,28 +60,6 @@ export abstract class BasicCrawlerProcessor<Context extends CrawlingContext>
 
   private isInitialized(): boolean {
     return !!this.crawler;
-  }
-
-  private async restart(isReleased: boolean = false): Promise<void> {
-    await Promise.all(this.actionsBeforeRestart);
-
-    !isReleased && (await this.release());
-
-    if (this.numOfRestarts >= BasicCrawlerProcessor.MAX_OF_RESTARTS) {
-      this.logger.error(
-        `Exceeded ${BasicCrawlerProcessor.MAX_OF_RESTARTS} times to restart crawler service.`,
-      );
-      process.exit(0);
-    }
-
-    if (this.crawler?.running) {
-      await sleep(3_000);
-      return await this.restart(true);
-    }
-
-    this.numOfRestarts++;
-    await sleep(3_000);
-    return await this.start();
   }
 
   public addActionsBeforeRestart(
@@ -128,6 +106,28 @@ export abstract class BasicCrawlerProcessor<Context extends CrawlingContext>
 
   public async release(): Promise<void> {
     await this.crawler?.teardown();
+  }
+
+  public async restart(isReleased: boolean = false): Promise<void> {
+    for (const action of this.actionsBeforeRestart) await action();
+
+    !isReleased && (await this.release());
+
+    if (this.numOfRestarts >= BasicCrawlerProcessor.MAX_OF_RESTARTS) {
+      this.logger.error(
+        `Exceeded ${BasicCrawlerProcessor.MAX_OF_RESTARTS} times to restart crawler service.`,
+      );
+      process.exit(0);
+    }
+
+    if (this.crawler?.running) {
+      await sleep(3_000);
+      return await this.restart(true);
+    }
+
+    this.numOfRestarts++;
+    await sleep(3_000);
+    return await this.start();
   }
 
   public setConfigKey(configKey: string): void {
