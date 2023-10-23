@@ -4,7 +4,6 @@ import {
   Inject,
   Injectable,
   OnModuleInit,
-  sleep,
 } from '@pentech/core';
 import {
   ConsumeMessage,
@@ -57,10 +56,11 @@ export abstract class Stream<Input = any, Output = any>
   }
 
   protected async _start(): Promise<void> {
-    this.start();
-    sleep(this.getConfig().waitToStartBeforeQueue).then(() =>
-      Promise.all([this.startConsumers(), this.startProducers()]),
-    );
+    await Promise.all([
+      this.startConsumers(),
+      this.startProducers(),
+      this.start(),
+    ]);
   }
 
   protected getConfig(): StreamConfig {
