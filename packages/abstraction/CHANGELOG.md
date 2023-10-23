@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.23](https://github.com/nvqh01/pentech/compare/@pentech/abstraction@1.0.22...@pentech/abstraction@1.0.23) (2023-10-23)
+
+**Note:** Version bump only for package @pentech/abstraction
+
 ## [1.0.22](https://github.com/nvqh01/pentech/compare/@pentech/abstraction@1.0.21...@pentech/abstraction@1.0.22) (2023-10-23)
 
 **Note:** Version bump only for package @pentech/abstraction
