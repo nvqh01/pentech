@@ -60,7 +60,16 @@ export abstract class Consumer<Input = any>
       name: config.channelName,
       confirm: false,
       setup: async (channel: Channel) => {
-        !this.isFirstStarted && (await Promise.all(this.actionsBeforeRestart));
+        this.isFirstStarted && this.logger.info('Ready to setup.');
+
+        if (!this.isFirstStarted) {
+          this.logger.info('Ready to execute actions before restart.');
+          for (const action of this.actionsBeforeRestart) {
+            await action();
+            this.logger.info('Finished executing action "%s".', action.name);
+          }
+        }
+
         this.isFirstStarted = false;
 
         return Promise.all([
