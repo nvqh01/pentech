@@ -23,7 +23,7 @@ export type ActcionBeforeRestart = (...args: any[]) => Promise<void> | void;
 export abstract class BasicCrawlerProcessor<Context extends CrawlingContext>
   implements OnModuleDestroy, OnModuleInit
 {
-  static MAX_OF_RESTARTS: number = 10;
+  static MAX_OF_RESTARTS: number = 5;
 
   private actionsBeforeRestart: ActcionBeforeRestart[];
   private numOfRestarts: number;
@@ -108,7 +108,11 @@ export abstract class BasicCrawlerProcessor<Context extends CrawlingContext>
     await this.crawler?.teardown();
   }
 
-  public async restart(isReleased: boolean = false): Promise<void> {
+  public async restart(
+    increaseNumOfRestart: boolean = true,
+    isReleased: boolean = false,
+  ): Promise<void> {
+    this.logger.debug('Ready to execute actions before restart.');
     for (const action of this.actionsBeforeRestart) await action();
 
     !isReleased && (await this.release());
@@ -122,12 +126,13 @@ export abstract class BasicCrawlerProcessor<Context extends CrawlingContext>
 
     if (this.crawler?.running) {
       await sleep(3_000);
-      return await this.restart(true);
+      return await this.restart(increaseNumOfRestart, true);
     }
 
-    this.numOfRestarts++;
+    increaseNumOfRestart && this.numOfRestarts++;
+
+    this.start();
     await sleep(3_000);
-    return await this.start();
   }
 
   public setConfigKey(configKey: string): void {
@@ -140,7 +145,7 @@ export abstract class BasicCrawlerProcessor<Context extends CrawlingContext>
       await this.crawler.run(requests);
     } catch (error) {
       this.logger.error('Restart crawler service with error: %j', error);
-      await this.restart();
+      await this.restart(true);
     }
   }
 }

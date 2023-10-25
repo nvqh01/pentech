@@ -5,6 +5,7 @@ import {
   LogService,
   OnModuleDestroy,
   OnModuleInit,
+  Scope,
 } from '@pentech/core';
 import {
   AmqpConnectionManager,
@@ -14,7 +15,11 @@ import {
 } from 'amqp-connection-manager';
 import { AdapterConfig } from './adapter.config';
 
-@Injectable()
+let indexOfAdapter: number = 0;
+
+@Injectable({
+  scope: Scope.TRANSIENT,
+})
 export class Adapter implements OnModuleDestroy, OnModuleInit {
   @Inject()
   private readonly configService: ConfigService;
@@ -28,7 +33,7 @@ export class Adapter implements OnModuleDestroy, OnModuleInit {
   private manager: AmqpConnectionManager;
 
   constructor() {
-    this.context = 'RabbitAdapter';
+    this.context = `RabbitAdapter-${indexOfAdapter++}`;
     this.configKey = 'rabbit';
   }
 

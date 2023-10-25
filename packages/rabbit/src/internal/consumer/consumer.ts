@@ -61,7 +61,7 @@ export abstract class Consumer<Input = any>
       confirm: false,
       setup: async (channel: Channel) => {
         if (!this.isFirstStarted) {
-          this.logger.info('Ready to execute actions before restart.');
+          this.logger.debug('Ready to execute actions before restart.');
           for (const action of this.actionsBeforeRestart) await action();
         }
 
