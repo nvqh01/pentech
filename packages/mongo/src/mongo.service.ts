@@ -80,12 +80,10 @@ export class MongoService implements OnModuleDestroy, OnModuleInit {
         this.getConfig().options,
       );
 
+      this.logger.debug('The client is connected.');
+
       this.client.connection.on('close', () => {
         this.logger.debug('The client is closed.');
-      });
-
-      this.client.connection.on('connected', () => {
-        this.logger.debug('The client is connected.');
       });
 
       this.client.connection.on('disconnected', error => {
