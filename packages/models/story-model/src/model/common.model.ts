@@ -1,6 +1,5 @@
-import { getCurrentDate } from '@pentech/core';
 import { modelOptions, mongoose, prop } from '@pentech/mongo';
-import { CrawlingStatus, Language, TypeOfStory } from '../enums';
+import { CrawlingStatus, Language, TypeOfFile, TypeOfStory } from '../enums';
 
 export const commonSchemaOptions: mongoose.SchemaOptions = {
   _id: false,
@@ -15,10 +14,15 @@ export class CrawlingInfo {
   @prop({ required: false })
   public checksum?: string;
 
-  @prop({ default: getCurrentDate(), required: false })
-  public crawled_date?: Date;
+  @prop({ required: true })
+  public crawled_date!: Date;
 
-  @prop({ enum: CrawlingStatus, required: false, type: () => Number })
+  @prop({
+    default: CrawlingStatus.IDLE,
+    enum: CrawlingStatus,
+    required: false,
+    type: () => Number,
+  })
   public crawling_status?: CrawlingStatus;
 
   @prop({ required: true })
@@ -49,6 +53,9 @@ export class FileData {
 
   @prop({ required: true })
   public path!: string;
+
+  @prop({ enum: TypeOfFile, required: false, type: () => String })
+  public type?: TypeOfFile;
 }
 
 @modelOptions({

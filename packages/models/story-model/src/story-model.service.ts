@@ -24,37 +24,47 @@ export const categoryModelProvider: Provider = {
   },
 };
 
-export const chapterByAudioModelProvider: Provider = {
+const chapterByAudioModelProvider: Provider = {
   provide: 'CHAPTER_BY_AUDIO_MODEL',
   useFactory(): ReturnModelType<typeof ChapterByAudio, any> {
     return getModelForClass(ChapterByAudio);
   },
 };
 
-export const chapterByImageModelProvider: Provider = {
+const chapterByImageModelProvider: Provider = {
   provide: 'CHAPTER_BY_IMAGE_MODEL',
   useFactory(): ReturnModelType<typeof ChapterByImage, any> {
     return getModelForClass(ChapterByImage);
   },
 };
 
-export const chapterByTextModelProvider: Provider = {
+const chapterByTextModelProvider: Provider = {
   provide: 'CHAPTER_BY_TEXT_MODEL',
   useFactory(): ReturnModelType<typeof ChapterByText, any> {
     return getModelForClass(ChapterByText);
   },
 };
 
-export const commentModelProvider: Provider = {
+const commentModelProvider: Provider = {
   provide: 'COMMENT_MODEL',
   useFactory(): ReturnModelType<typeof Comment, any> {
     return getModelForClass(Comment);
   },
 };
 
-export const storyModelProvider: Provider = {
+const storyModelProvider: Provider = {
   provide: 'STORY_MODEL',
   useFactory(): ReturnModelType<typeof Story, any> {
     return getModelForClass(Story);
   },
 };
+
+export const providers: Provider[] = [
+  authorModelProvider,
+  categoryModelProvider,
+  chapterByAudioModelProvider,
+  chapterByImageModelProvider,
+  chapterByTextModelProvider,
+  commentModelProvider,
+  storyModelProvider,
+];

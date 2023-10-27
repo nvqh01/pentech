@@ -1,5 +1,5 @@
 import { Ref, modelOptions, prop } from '@pentech/mongo';
-import { FileData, Origin } from './common.model';
+import { FileData, HybridData, Origin } from './common.model';
 import { Source } from './source';
 
 export class Resouce extends Origin {
@@ -19,6 +19,16 @@ export class Resouce extends Origin {
 
 @modelOptions({
   schemaOptions: {
+    collection: 'dc_hybrid_resources',
+  },
+})
+export class HybridResource extends Resouce {
+  @prop({ required: true, type: () => HybridData })
+  public content!: HybridData;
+}
+
+@modelOptions({
+  schemaOptions: {
     collection: 'dc_resources_by_image',
   },
 })
@@ -33,8 +43,8 @@ export class ResourceByImage extends Resouce {
   },
 })
 export class ResourceByText extends Resouce {
-  @prop({ required: true })
-  public content!: string;
+  @prop({ required: true, type: () => String })
+  public content!: string[];
 }
 
 @modelOptions({

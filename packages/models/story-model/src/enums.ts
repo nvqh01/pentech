@@ -12,6 +12,11 @@ export enum Language {
   CN = 3,
 }
 
+export enum TypeOfFile {
+  IMAGE = 'image',
+  VIDEO = 'video',
+}
+
 export enum TypeOfStory {
   UNKNOWN = 0,
   COMICS = 1,

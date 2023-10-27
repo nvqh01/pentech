@@ -1,6 +1,5 @@
-import { getCurrentDate } from '@pentech/core';
 import { modelOptions, mongoose, prop } from '@pentech/mongo';
-import { CrawlingStatus } from '../enums';
+import { CrawlingStatus, Language, TypeOfFile } from '../enums';
 
 export const commonSchemaOptions: mongoose.SchemaOptions = {
   _id: false,
@@ -15,10 +14,15 @@ export class CrawlingInfo {
   @prop({ required: false })
   public checksum?: string;
 
-  @prop({ default: getCurrentDate(), required: false })
-  public crawled_date?: Date;
+  @prop({ required: true })
+  public crawled_date!: Date;
 
-  @prop({ enum: CrawlingStatus, required: false, type: () => Number })
+  @prop({
+    default: CrawlingStatus.IDLE,
+    enum: CrawlingStatus,
+    required: false,
+    type: () => Number,
+  })
   public crawling_status?: CrawlingStatus;
 
   @prop({ required: true })
@@ -49,11 +53,29 @@ export class FileData {
 
   @prop({ required: true })
   public path!: string;
+
+  @prop({ enum: TypeOfFile, required: false, type: () => String })
+  public type?: TypeOfFile;
+}
+
+@modelOptions({
+  schemaOptions: commonSchemaOptions,
+})
+export class HybridData {
+  @prop({ required: false, type: () => FileData })
+  public images?: FileData[];
+
+  @prop({ required: false, type: () => String })
+  public text?: string[];
+
+  @prop({ required: false, type: () => FileData })
+  public video?: FileData[];
 }
 
 @modelOptions({
   schemaOptions: {
     ...commonSchemaOptions,
+    _id: true,
     timestamps: true,
     toJSON: { virtuals: true },
     toObject: { virtuals: true },
@@ -68,6 +90,15 @@ export class Origin {
 
   @prop({ index: true, required: false })
   public deleted_date?: Date;
+
+  @prop({
+    default: () => Language.UNKNOWN,
+    enum: Language,
+    index: true,
+    required: false,
+    type: () => Number,
+  })
+  public language?: Language;
 }
 
 @modelOptions({
